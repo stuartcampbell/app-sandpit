@@ -1,9 +1,10 @@
 
+from pathlib import Path
 from sandpit.version import get_version
 from sandpit.infrastructure.logging import logger
 import sandpit.infrastructure.app_setup as app_setup
 import fastapi
-from sandpit.infrastructure.middleware import middleware
+from sandpit.infrastructure import middleware
 
 current_file = Path(__file__)
 current_file_dir = current_file.parent
