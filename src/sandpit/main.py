@@ -4,7 +4,9 @@ from sandpit.version import get_version
 from sandpit.infrastructure.logging import logger
 import sandpit.infrastructure.app_setup as app_setup
 import fastapi
-from sandpit.infrastructure import middleware
+from starlette.middleware import Middleware
+
+from sandpit.infrastructure.middleware import ProcessTimeMiddleware
 
 current_file = Path(__file__)
 current_file_dir = current_file.parent
@@ -13,6 +15,7 @@ project_root = current_file_dir.parent
 project_root_absolute = project_root.resolve()
 static_root_absolute = current_file_dir_absolute / "static"
 
+middleware = [Middleware(ProcessTimeMiddleware)]
 
 app = fastapi.FastAPI(
     title="Sandpit Play API", middleware=middleware, lifespan=app_setup.app_lifespan
