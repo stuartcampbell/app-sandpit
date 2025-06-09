@@ -1,5 +1,5 @@
 FROM ghcr.io/astral-sh/uv:latest AS uv
-FROM python:3.12
+FROM python:3.13-slim
 COPY --from=uv /uv /bin/uv
 
 ENV UV_SYSTEM_PYTHON=1
